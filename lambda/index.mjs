@@ -1,12 +1,13 @@
 import AWS from "aws-sdk";
 const apiGateway = new AWS.ApiGatewayManagementApi({
-  endpoint: "l",
+  endpoint: process.env.WEBSOCKET_URL,
   apiVersion: "2018-11-29",
   region: "us-east-1",
 });
 export const handler = async (event) => {
   // TODO implement
   console.log(AWS.VERSION);
+  console.log(event);
   const { requestContext, body } = event;
   const connectionId = requestContext.connectionId;
   const routeKey = requestContext.routeKey;
